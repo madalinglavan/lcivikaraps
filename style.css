@@ -451,3 +451,27 @@ ul {
     grid-template-columns:1fr;
   }
 }
+
+
+
+.lang-switch {
+  display: flex;
+  gap: 10px;
+}
+
+.lang-switch a {
+  color: rgba(255,255,255,0.7);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 2px 4px;
+  transition: color 0.3s ease;
+}
+
+.lang-switch a:hover {
+  color: #fff;
+}
+
+.lang-switch a.active {
+  color: #25D366;
+}

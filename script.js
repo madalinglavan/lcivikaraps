@@ -92,3 +92,24 @@ window.addEventListener("scroll", () => {
   document.querySelector(".header")
     .classList.toggle("scrolled", window.scrollY > 10);
 });
+
+
+function setLang(lang) {
+  localStorage.setItem("lang_selected", lang);
+}
+
+if (!localStorage.getItem("lang_selected")) {
+  fetch("https://ipapi.co/json/")
+    .then(res => res.json())
+    .then(data => {
+
+      if (data.country === "DK") {
+        window.location.href = "/dk/";
+      }
+
+      if (data.country === "RO") {
+        window.location.href = "/ro/";
+      }
+
+    });
+}
