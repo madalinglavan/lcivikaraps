@@ -98,3 +98,18 @@ function setLang(lang) {
   localStorage.setItem("lang_selected", lang);
 }
 
+const savedLang = localStorage.getItem("lang_selected");
+
+if (savedLang) {
+  const basePath = window.location.pathname.includes("lcivikaraps")
+    ? "/lcivikaraps"
+    : "";
+
+  if (savedLang === "ro" && !window.location.pathname.includes("/ro/")) {
+    window.location.href = basePath + "/ro/";
+  }
+
+  if (savedLang === "dk" && !window.location.pathname.includes("/dk/")) {
+    window.location.href = basePath + "/dk/";
+  }
+}
