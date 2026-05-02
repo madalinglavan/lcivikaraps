@@ -98,17 +98,24 @@ function setLang(lang) {
   localStorage.setItem("lang_selected", lang);
 }
 
-if (!localStorage.getItem("lang_selected")) {
+if (
+  (window.location.pathname === "/" || window.location.pathname === "/lcivikaraps/") &&
+  !localStorage.getItem("lang_selected")
+) {
   fetch("https://ipapi.co/json/")
     .then(res => res.json())
     .then(data => {
 
+      const basePath = window.location.pathname.includes("lcivikaraps")
+        ? "/lcivikaraps"
+        : "";
+
       if (data.country === "DK") {
-        window.location.href = "/dk/";
+        window.location.href = basePath + "/dk/";
       }
 
       if (data.country === "RO") {
-        window.location.href = "/ro/";
+        window.location.href = basePath + "/ro/";
       }
 
     });
